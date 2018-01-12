@@ -1,0 +1,43 @@
+<template name="game">
+  {{#if Template.subscriptionsReady}}
+
+  <div class="row">
+    <div class="col-sm-4">{{> board rows}}</div>
+
+    <div class="col-sm-4">
+      {{#if result}}
+      <h2>{{result}}</h2>
+      {{else}}
+      <h2>Currently, {{currentTurn}}'s turn</h2>
+      {{/if}}
+
+      <h3>Moves</h3>
+      {{> moveList moves}}
+    </div>
+
+    <div class="col-sm-4">{{> chat}}</div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="moveList">
+  <ol>
+    {{#each move in this}}
+    <li>{{move}}</li>
+    {{/each}}
+  </ol>
+</template>
+
+<template name="board">
+  <table>
+    {{#each row in this}}
+      <tr>
+        {{#each row}}
+          <td id="{{cell}}">
+            {{{img}}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </table>
+</template>
